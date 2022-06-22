@@ -119,8 +119,12 @@ fieldset legend {
   color: #253B51;
 }
 
+.fieldset-wrapper legend {
+  display: flex;
+  justify-content: center;
+}
+
 .line-col-2 {
-  /* border: 2px solid red; */
   display: flex;
   gap: 20px;
 }
@@ -134,15 +138,14 @@ fieldset legend {
 }
 
 .input-wrapper {
-  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
 
   margin-bottom: 20px; 
 }
 
-.input-wrapper label {
-   /* border: 2px solid blue;  */
+.input-wrapper label,
+.checkbox-wrapper label {
   font-size: 14px;
 
   color: #4E4958;
@@ -179,6 +182,15 @@ fieldset legend {
   padding-inline: 10px;
 }
 
+.input-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 10L12 14L16 10' stroke='%239C98A6' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: right 5px top 50%;
+}
+
 #event-mentor {
   display: flex;
   flex-direction: column;
@@ -194,6 +206,46 @@ fieldset legend {
   height: 165px;
 
   padding: 10px;
+}
+
+.checkbox-wrapper {
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.checkbox-wrapper label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin: 0;
+}
+
+.checkbox-wrapper input {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+
+  opacity: 0;
+
+}
+
+.checkbox-wrapper label::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: block;
+
+  border: 1px solid hsl(240, 25%, 92%);
+  border-radius: 8px;
+}
+
+.checkbox-wrapper input:checked + label::before {
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z' fill='%2342D3FF'/%3E%3C/svg%3E%0A");
+}
+
+.checkbox-wrapper input:focus + label::before {
+  outline: 2px solid black;
 }
 
 .line-col-3 {
@@ -249,6 +301,7 @@ footer button:hover {
 }
 
 input:invalid, 
-select:invalid, textarea:invalid {
+select:invalid, 
+textarea:invalid {
   border: 1px solid #ec9d9d;
 }
